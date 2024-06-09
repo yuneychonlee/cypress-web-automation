@@ -1,83 +1,87 @@
-it('User registration and deletion flow', () => {
-  cy.visit('/');
-  cy.get('.shop-menu.pull-right').should('be.visible');
+import * as userData from '@fixtures/user.json'
 
-  // Go to the sign up page and check page visibility
-  cy.contains(' Signup / Login')
-    .click();
-  cy.contains('New User Signup!');
+describe('Register as a new user with fixture data', () => {
+  it('Should create a new account and then delete it', () => {
+    cy.visit('/');
+    cy.get('.shop-menu.pull-right').should('be.visible');
 
-  // Enter email and password for registration
-  cy.get('[data-qa="signup-name"]')
-    .click()
-    .type('tester-reeves');
-  cy.get('[data-qa="signup-email"]')
-    .click()
-    .type('keanu@hollywood.com');
-  cy.get('[data-qa="signup-button"]')
-    .click();
+    // Go to the sign up page and check page visibility
+    cy.contains(' Signup / Login')
+      .click();
+    cy.contains('New User Signup!');
 
-  // Check the registration page is visible
-  cy.contains('Enter Account Information');
+    // Enter email and password for registration
+    cy.get('[data-qa="signup-name"]')
+      .click()
+      .type(userData.user);
+    cy.get('[data-qa="signup-email"]')
+      .click()
+      .type(userData.email);
+    cy.get('[data-qa="signup-button"]')
+      .click();
 
-  // Fill details: Title, Name, Email, Password, Date of birth
-  cy.get('#id_gender1').check();
-  cy.get('[data-qa="password"]')
-    .click()
-    .type('i like to automate tests');
+    // Check the registration page is visible
+    cy.contains('Enter Account Information');
 
-  cy.get('[data-qa="days"]').select('2');
-  cy.get('[data-qa="months"]').select('9');
-  cy.get('[data-qa="years"]').select('1964');
+    // Fill details: Title, Name, Email, Password, Date of birth
+    cy.get('#id_gender1').check();
+    cy.get('[data-qa="password"]')
+      .click()
+      .type(userData.password);
 
-  // Select checkbox 'Sign up for our newsletter!'
-  cy.get('#newsletter').check();
+    cy.get('[data-qa="days"]').select(userData.dob.split('/')[1]);
+    cy.get('[data-qa="months"]').select(userData.dob.split('/')[0]);
+    cy.get('[data-qa="years"]').select(userData.dob.split('/')[2]);
 
-  // Select checkbox 'Receive special offers from our partners!'
-  cy.get('#optin').check();
+    // Select checkbox 'Sign up for our newsletter!'
+    cy.get('#newsletter').check();
 
-  // Fill mandatory details: First name, Last name, Address, Country, State, City, Zipcode, Mobile Number
-  cy.get('[data-qa="first_name"]')
-    .click()
-    .type('Keanu');
-  cy.get('[data-qa="last_name"]')
-    .click()
-    .type('Reeves');
-  cy.get('[data-qa="address"]')
-    .click()
-    .type('Yorkville Neighbourhood');
-  cy.get('[data-qa="country"]').select('Canada');
-  cy.get('[data-qa="state"]')
-    .click()
-    .type('Ontario');
-  cy.get('[data-qa="city"]')
-    .click()
-    .type('Toronto');
-  cy.get('[data-qa="zipcode"]')
-    .click()
-    .type('M4W 1L1');
-  cy.get('[data-qa="mobile_number"]')
-    .click()
-    .type('4371112222')
+    // Select checkbox 'Receive special offers from our partners!'
+    cy.get('#optin').check();
 
-  // Click 'Create Account button'
-  cy.get('[data-qa="create-account"]').click();
+    // Fill mandatory details: First name, Last name, Address, Country, State, City, Zipcode, Mobile Number
+    cy.get('[data-qa="first_name"]')
+      .click()
+      .type(userData.firstName);
+    cy.get('[data-qa="last_name"]')
+      .click()
+      .type(userData.lastName);
+    cy.get('[data-qa="address"]')
+      .click()
+      .type(userData.address);
+    cy.get('[data-qa="country"]').select(userData.country);
+    cy.get('[data-qa="state"]')
+      .click()
+      .type(userData.state);
+    cy.get('[data-qa="city"]')
+      .click()
+      .type(userData.city);
+    cy.get('[data-qa="zipcode"]')
+      .click()
+      .type(userData.zipcode);
+    cy.get('[data-qa="mobile_number"]')
+      .click()
+      .type(userData.mobile)
 
-  // Verify that 'ACCOUNT CREATED!' is visible
-  cy.get('[data-qa="account-created"]').contains('Account Created!');
+    // Click 'Create Account button'
+    cy.get('[data-qa="create-account"]').click();
 
-  // Click 'Continue' button
-  cy.get('[data-qa="continue-button"]').click();
+    // Verify that 'ACCOUNT CREATED!' is visible
+    cy.get('[data-qa="account-created"]').contains('Account Created!');
 
-  // Verify that 'Logged in as username' is visible
-  // TODO Assert username
-  // FIXME replace usernname with variable
-  cy.contains(' Logged in as tester-reeves');
+    // Click 'Continue' button
+    cy.get('[data-qa="continue-button"]').click();
 
-  // Click 'Delete Account' button
-  cy.get('.shop-menu > .nav > :nth-child(5) > a').click();
+    // Verify that 'Logged in as username' is visible
+    cy.get(':nth-child(10) > a')
+      .contains(' Logged in as')
+      .should('have.text', ` Logged in as ${userData.user}`);
 
-  // Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
-  cy.get('[data-qa="account-deleted"]').contains('Account Deleted!');
-  cy.get('[data-qa="continue-button"]').click();
+    // Click 'Delete Account' button
+    cy.get('.shop-menu > .nav > :nth-child(5) > a').click();
+
+    // Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
+    cy.get('[data-qa="account-deleted"]').contains('Account Deleted!');
+    cy.get('[data-qa="continue-button"]').click();
+  })
 })
