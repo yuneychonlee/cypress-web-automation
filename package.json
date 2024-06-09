@@ -11,13 +11,13 @@
     "url": "git+https://github.com/YuneyC/cypress-web-automation.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Yuney Chonlee",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/YuneyC/cypress-web-automation/issues"
-  },
   "homepage": "https://github.com/YuneyC/cypress-web-automation#readme",
   "dependencies": {
     "cypress": "^13.11.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
   }
 }
