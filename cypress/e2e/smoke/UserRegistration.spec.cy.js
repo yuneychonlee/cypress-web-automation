@@ -1,4 +1,4 @@
-it('Register User', () => {
+it('User registration and deletion flow', () => {
   cy.visit('/');
 
   // Go to the sign up page and check page visibility
