@@ -1,0 +1,23 @@
+{
+  "name": "cypress-web-automation",
+  "version": "1.0.0",
+  "description": "A practice automation project to test the web app with Cypress in Javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YuneyC/cypress-web-automation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YuneyC/cypress-web-automation/issues"
+  },
+  "homepage": "https://github.com/YuneyC/cypress-web-automation#readme",
+  "dependencies": {
+    "cypress": "^13.11.0"
+  }
+}
