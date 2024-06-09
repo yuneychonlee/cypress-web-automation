@@ -5,7 +5,8 @@ it('Test the user flow of the Contact Us form', () => {
     cy.get('.shop-menu.pull-right').should('be.visible');
     
     // Visit Contact Us page
-    cy.get('.shop-menu > .nav > :nth-child(8) > a').contains(' Contact us').click();
+    cy.get('.shop-menu > .nav > :nth-child(8) > a').
+    contains(' Contact us').click();
     cy.contains('Get In Touch');
 
     // Fill required fields
