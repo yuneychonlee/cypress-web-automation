@@ -1,5 +1,6 @@
 it('User registration and deletion flow', () => {
   cy.visit('/');
+  cy.get('.shop-menu.pull-right').should('be.visible');
 
   // Go to the sign up page and check page visibility
   cy.contains(' Signup / Login')
