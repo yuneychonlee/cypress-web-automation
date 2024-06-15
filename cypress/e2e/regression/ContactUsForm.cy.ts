@@ -1,5 +1,3 @@
-/// <reference types="cypress" />
-
 it('Test the user flow of the Contact Us form', () => {
     cy.visit('/');
     cy.get('.shop-menu.pull-right').should('be.visible');
