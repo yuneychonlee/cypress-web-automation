@@ -10,15 +10,15 @@ it('Test the user flow of the Contact Us form', () => {
     cy.contains('Get In Touch');
 
     // Fill required fields
-    cy.get('[data-qa="name"]').type('Tester Bot');
-    cy.get('[data-qa="email"]').type('testerbot@gmail.com');
-    cy.get('[data-qa="subject"]').type('Testing contact us form.');
-    cy.get('[data-qa="message"]').type('This is a test.');
+    cy.getByDataLocator('name').type('Tester Bot');
+    cy.getByDataLocator('email').type('testerbot@gmail.com');
+    cy.getByDataLocator('subject').type('Testing contact us form.');
+    cy.getByDataLocator('message').type('This is a test.');
 
-    // Upload file
+    // TODO Upload file
 
     // Submit and return to homepage
-    cy.get('[data-qa="submit-button"]').click();
+    cy.getByDataLocator('submit-button').click();
     cy.visit('/');
     cy.get('.shop-menu.pull-right').should('be.visible');
 })

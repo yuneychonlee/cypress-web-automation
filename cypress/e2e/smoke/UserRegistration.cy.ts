@@ -11,13 +11,13 @@ describe('Register as a new user with fixture data', () => {
     cy.contains('New User Signup!');
 
     // Enter email and password for registration
-    cy.get('[data-qa="signup-name"]')
+    cy.getByDataLocator('signup-name')
       .click()
       .type(userData.user);
-    cy.get('[data-qa="signup-email"]')
+    cy.getByDataLocator('signup-email')
       .click()
       .type(userData.email);
-    cy.get('[data-qa="signup-button"]')
+    cy.getByDataLocator('signup-button')
       .click();
 
     // Check the registration page is visible
@@ -25,13 +25,13 @@ describe('Register as a new user with fixture data', () => {
 
     // Fill details: Title, Name, Email, Password, Date of birth
     cy.get('#id_gender1').check();
-    cy.get('[data-qa="password"]')
+    cy.getByDataLocator('password')
       .click()
       .type(userData.password);
 
-    cy.get('[data-qa="days"]').select(userData.dob.split('/')[1]);
-    cy.get('[data-qa="months"]').select(userData.dob.split('/')[0]);
-    cy.get('[data-qa="years"]').select(userData.dob.split('/')[2]);
+    cy.getByDataLocator('days').select(userData.dob.split('/')[1]);
+    cy.getByDataLocator('months').select(userData.dob.split('/')[0]);
+    cy.getByDataLocator('years').select(userData.dob.split('/')[2]);
 
     // Select checkbox 'Sign up for our newsletter!'
     cy.get('#newsletter').check();
@@ -40,37 +40,37 @@ describe('Register as a new user with fixture data', () => {
     cy.get('#optin').check();
 
     // Fill mandatory details: First name, Last name, Address, Country, State, City, Zipcode, Mobile Number
-    cy.get('[data-qa="first_name"]')
+    cy.getByDataLocator('first_name')
       .click()
       .type(userData.firstName);
-    cy.get('[data-qa="last_name"]')
+    cy.getByDataLocator('last_name')
       .click()
       .type(userData.lastName);
-    cy.get('[data-qa="address"]')
+    cy.getByDataLocator('address')
       .click()
       .type(userData.address);
-    cy.get('[data-qa="country"]').select(userData.country);
-    cy.get('[data-qa="state"]')
+    cy.getByDataLocator('country').select(userData.country);
+    cy.getByDataLocator('state')
       .click()
       .type(userData.state);
-    cy.get('[data-qa="city"]')
+    cy.getByDataLocator('city')
       .click()
       .type(userData.city);
-    cy.get('[data-qa="zipcode"]')
+    cy.getByDataLocator('zipcode')
       .click()
       .type(userData.zipcode);
-    cy.get('[data-qa="mobile_number"]')
+    cy.getByDataLocator('mobile_number')
       .click()
       .type(userData.mobile)
 
     // Click 'Create Account button'
-    cy.get('[data-qa="create-account"]').click();
+    cy.getByDataLocator('create-account').click();
 
     // Verify that 'ACCOUNT CREATED!' is visible
-    cy.get('[data-qa="account-created"]').contains('Account Created!');
+    cy.getByDataLocator('account-created').contains('Account Created!');
 
     // Click 'Continue' button
-    cy.get('[data-qa="continue-button"]').click();
+    cy.getByDataLocator('continue-button').click();
 
     // Verify that 'Logged in as username' is visible
     cy.get(':nth-child(10) > a')
@@ -81,7 +81,7 @@ describe('Register as a new user with fixture data', () => {
     cy.get('.shop-menu > .nav > :nth-child(5) > a').click();
 
     // Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
-    cy.get('[data-qa="account-deleted"]').contains('Account Deleted!');
-    cy.get('[data-qa="continue-button"]').click();
+    cy.getByDataLocator('account-deleted').contains('Account Deleted!');
+    cy.getByDataLocator('continue-button').click();
   })
 })

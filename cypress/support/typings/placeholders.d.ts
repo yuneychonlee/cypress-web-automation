@@ -1,4 +1,9 @@
 export type DataLocators = 
+    | 'name'
+    | 'email'
+    | 'subject'
+    | 'message'
+    | 'submit-button'
     | 'signup-name'
     | 'signup-email'
     | 'signup-button'
