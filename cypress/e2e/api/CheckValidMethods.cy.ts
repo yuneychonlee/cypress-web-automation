@@ -1,6 +1,6 @@
 describe('Check API calls with valid methods', () => {
     it('GET returns all products list successfully', () => {
-        cy.request('GET','https://automationexercise.com/api/productsList').then(
+        cy.request('GET','/api/productsList').then(
             (response) => {
                 cy.log(response.body)
                 expect(response.status).to.eq(200)
@@ -9,7 +9,7 @@ describe('Check API calls with valid methods', () => {
     })
 
     it('GET returns all brands list successfully', () => {
-        cy.request('GET', 'https://automationexercise.com/api/brandsList').then(
+        cy.request('GET', '/api/brandsList').then(
             (response) => {
                 cy.log(response.body)
                 expect(response.status).to.eq(200)
