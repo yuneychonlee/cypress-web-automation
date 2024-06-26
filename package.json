@@ -4,7 +4,10 @@
   "description": "A practice automation project to test the web app with Cypress in Javascript",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cy:open": "npx cypress open",
+    "cy:run:api": "npx cypress run --spec ./cypress/e2e/api/*.ts",
+    "cy:run:smoke": "npx cypress run --spec ./cypress/e2e/smoke/*.ts",
+    "cy:run:regression": "npx cypress run --spec ./cypress/e2e/regression/*.ts"
   },
   "repository": {
     "type": "git",
