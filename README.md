@@ -5,9 +5,16 @@ Test website https://www.automationexercise.com/
 Credits to Arjun Thakur
 
 ## How to run Cypress tests
-In the CLI, at the root folder run:
+In the CLI, at the root folder run to open up the Cypress UI.
+Select 'E2E Testing' then proceed with a preferred browser to the e2e test specs.
 ```
-npx cypress open
+npm run cy:open
 ```
 
-In the Cypress UI, select 'E2E Testing' then proceed with a preferred browser to the e2e test specs.
+ALternatively, tests can run headless with respective target folders.
+```
+npm run cy:run // all e2e tests
+npm run cy:run:api
+npm run cy:run:smoke
+npm run:regression
+```
