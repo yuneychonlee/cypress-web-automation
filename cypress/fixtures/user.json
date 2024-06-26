@@ -1,14 +1,16 @@
 {
-  "user": "tester-reeves",
-  "password": "i like to automate tests",
-  "email": "keanu@hollywood.com",
-  "firstName": "Keanu",
-  "lastName": "Reeves",
-  "dob": "9/2/1964",
-  "address": "Yorkville Neighbourhood",
-  "city": "Toronto",
-  "state": "Ontario",
-  "country": "Canada",
-  "zipcode": "M4W 1L1",
-  "mobile": "4371112222"
+  "keanu": {
+    "user": "tester-reeves",
+    "password": "i like to automate tests",
+    "email": "keanu@hollywood.com",
+    "firstName": "Keanu",
+    "lastName": "Reeves",
+    "dob": "9/2/1964",
+    "address": "Yorkville Neighbourhood",
+    "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
+    "zipcode": "M4W 1L1",
+    "mobile": "4371112222"
+  }
 }

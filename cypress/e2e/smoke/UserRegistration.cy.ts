@@ -13,10 +13,10 @@ describe('Register as a new user with fixture data', () => {
     // Enter email and password for registration
     cy.getByDataLocator('signup-name')
       .click()
-      .type(userData.user);
+      .type(userData.keanu.user);
     cy.getByDataLocator('signup-email')
       .click()
-      .type(userData.email);
+      .type(userData.keanu.email);
     cy.getByDataLocator('signup-button')
       .click();
 
@@ -27,11 +27,11 @@ describe('Register as a new user with fixture data', () => {
     cy.get('#id_gender1').check();
     cy.getByDataLocator('password')
       .click()
-      .type(userData.password);
+      .type(userData.keanu.password);
 
-    cy.getByDataLocator('days').select(userData.dob.split('/')[1]);
-    cy.getByDataLocator('months').select(userData.dob.split('/')[0]);
-    cy.getByDataLocator('years').select(userData.dob.split('/')[2]);
+    cy.getByDataLocator('days').select(userData.keanu.dob.split('/')[1]);
+    cy.getByDataLocator('months').select(userData.keanu.dob.split('/')[0]);
+    cy.getByDataLocator('years').select(userData.keanu.dob.split('/')[2]);
 
     // Select checkbox 'Sign up for our newsletter!'
     cy.get('#newsletter').check();
@@ -42,26 +42,26 @@ describe('Register as a new user with fixture data', () => {
     // Fill mandatory details: First name, Last name, Address, Country, State, City, Zipcode, Mobile Number
     cy.getByDataLocator('first_name')
       .click()
-      .type(userData.firstName);
+      .type(userData.keanu.firstName);
     cy.getByDataLocator('last_name')
       .click()
-      .type(userData.lastName);
+      .type(userData.keanu.lastName);
     cy.getByDataLocator('address')
       .click()
-      .type(userData.address);
-    cy.getByDataLocator('country').select(userData.country);
+      .type(userData.keanu.address);
+    cy.getByDataLocator('country').select(userData.keanu.country);
     cy.getByDataLocator('state')
       .click()
-      .type(userData.state);
+      .type(userData.keanu.state);
     cy.getByDataLocator('city')
       .click()
-      .type(userData.city);
+      .type(userData.keanu.city);
     cy.getByDataLocator('zipcode')
       .click()
-      .type(userData.zipcode);
+      .type(userData.keanu.zipcode);
     cy.getByDataLocator('mobile_number')
       .click()
-      .type(userData.mobile)
+      .type(userData.keanu.mobile)
 
     // Click 'Create Account button'
     cy.getByDataLocator('create-account').click();
@@ -75,7 +75,7 @@ describe('Register as a new user with fixture data', () => {
     // Verify that 'Logged in as username' is visible
     cy.get(':nth-child(10) > a')
       .contains(' Logged in as')
-      .should('have.text', ` Logged in as ${userData.user}`);
+      .should('have.text', ` Logged in as ${userData.keanu.user}`);
 
     // Click 'Delete Account' button
     cy.get('.shop-menu > .nav > :nth-child(5) > a').click();
