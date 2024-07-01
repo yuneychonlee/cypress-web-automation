@@ -8,12 +8,14 @@
     "cy:run": "npx cypress run",
     "cy:run:api": "npx cypress run --spec ./cypress/e2e/api/*.ts",
     "cy:run:smoke": "npx cypress run --spec ./cypress/e2e/smoke/*.ts",
-    "cy:run:regression": "npx cypress run --spec ./cypress/e2e/regression/*.ts"
+    "cy:run:regression": "npx cypress run --spec ./cypress/e2e/regression/*.ts",
+    "lint": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/YuneyC/cypress-web-automation.git"
   },
+  "pre-commit": [ "lint" ],
   "keywords": [],
   "author": "Yuney Chonlee",
   "license": "ISC",
@@ -23,6 +25,7 @@
     "cypress-real-events": "^1.12.0"
   },
   "devDependencies": {
+    "pre-commit": "^1.2.2",
     "typescript": "^5.4.5"
   }
 }
