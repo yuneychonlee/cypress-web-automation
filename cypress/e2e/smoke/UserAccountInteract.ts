@@ -1,7 +1,7 @@
 import * as userData from '@fixtures/user.json'
 
-describe('Register as a new user with fixture data', () => {
-  it('Should create a new account and then delete it', () => {
+describe('Testing user account interactions', () => {
+  it('Should register a new user account', () => {
     cy.visit('/');
     cy.get('.shop-menu.pull-right').should('be.visible');
 
@@ -76,6 +76,77 @@ describe('Register as a new user with fixture data', () => {
     cy.get(':nth-child(10) > a')
       .contains(' Logged in as')
       .should('have.text', ` Logged in as ${userData.keanu.user}`);
+
+    // Verify that the user is able to log out
+    cy.contains('Logout').click();
+    cy.contains(' Logged in as').should('not.exist');
+    cy.contains('Login to your account').should('be.visible');
+  })
+
+  it('Should not be able to register with existing email', () => {
+    cy.visit('/');
+    cy.get('.shop-menu.pull-right').should('be.visible');
+
+    // Go to the sign up page and check page visibility
+    cy.contains(' Signup / Login')
+      .click();
+    cy.contains('New User Signup!');
+
+    // Enter existing email and password for registration
+    cy.getByDataLocator('signup-name')
+      .click()
+      .type(userData.keanu.user);
+    cy.getByDataLocator('signup-email')
+      .click()
+      .type(userData.keanu.email);
+    cy.getByDataLocator('signup-button')
+      .click();
+
+    cy.contains('Email Address already exist!').should('be.visible');
+  })
+
+  it('Should not be able to log in with incorrect email and password', () => {
+    cy.visit('/');
+    cy.get('.shop-menu.pull-right').should('be.visible');
+
+    // Go to the sign up page and check page visibility
+    cy.contains(' Signup / Login')
+      .click();
+    cy.contains('Login to your account');
+    
+    // Enter incorrect email and password for registration
+    cy.getByDataLocator('login-email')
+      .click()
+      .type(userData.keanu.email + 'wrong');
+    cy.getByDataLocator('login-password')
+      .click()
+      .type(userData.keanu.password + 'wrong');
+    cy.getByDataLocator('login-button')
+      .click();
+
+    cy.contains('Your email or password is incorrect!').should('be.visible');
+  })
+
+  it('Should be able to log in with correct email and password', () => {
+    cy.visit('/');
+    cy.get('.shop-menu.pull-right').should('be.visible');
+
+    // Go to the sign up page and check page visibility
+    cy.contains(' Signup / Login')
+      .click();
+    cy.contains('Login to your account');
+
+    // Enter correct email and password for registration
+    cy.getByDataLocator('login-email')
+      .click()
+      .type(userData.keanu.email);
+    cy.getByDataLocator('login-password')
+      .click()
+      .type(userData.keanu.password);
+    cy.getByDataLocator('login-button')
+      .click();
+
+    cy.contains(` Logged in as ${userData.keanu.user}`);
 
     // Click 'Delete Account' button
     cy.get('.shop-menu > .nav > :nth-child(5) > a').click();
