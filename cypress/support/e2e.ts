@@ -16,6 +16,7 @@
 // Import commands.js using ES2015 syntax:
 import 'cypress-real-events'
 import './commands/getByDataLocator'
+import './commands/registerUserApi'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
