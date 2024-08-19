@@ -11,7 +11,7 @@ Select 'E2E Testing' then proceed with a preferred browser to the e2e test specs
 npm run cy:open
 ```
 
-ALternatively, tests can run headless with respective target folders.
+Alternatively, tests can run headless with respective target folders.
 ```
 npm run cy:run // all e2e tests
 npm run cy:run:api
